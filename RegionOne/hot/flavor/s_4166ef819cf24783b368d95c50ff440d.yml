@@ -1,0 +1,24 @@
+heat_template_version: 2013-05-23
+
+description: yaml file for region - RegionOne
+
+resources:
+  nova_flavor:
+    properties:
+      disk: 2
+      ephemeral: 0
+      extra_specs: {'aggregate_instance_extra_specs:nv': 'true', 'hw:cpu_policy': dedicated,
+        'hw:mem_page_size': large, 'hw:numa_nodes': '2'}
+      flavorid: 4166ef819cf24783b368d95c50ff440d
+      is_public: true
+      name: nv.c3r10d2.n0
+      ram: 10240
+      rxtx_factor: 1
+      swap: 0
+      tenants: []
+      vcpus: 3
+    type: OS::Nova::Flavor
+
+outputs:
+  nova_flavor_id:
+    value: {get_resource: nova_flavor}
